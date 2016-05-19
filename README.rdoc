@@ -1,42 +1,27 @@
-== README
+= MyTunes (Recordly Demo)
 
+Description: 	https://gist.github.com/stujo/9aa6f5b2e16eb04c0bed5b69e187c352
+Heroku hosting: https://mytunes-blythe.herokuapp.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>. 
 
 == Simplified assumptions
-* Only one artist is allowed per album and also song. has_and_belongs_to_many could be used between User and Song to create and association for additional artists for each song. 
+* Only one artist is allowed per album and also song. <tt>has_and_belongs_to_many</tt> could be used between User and Song to create and association for additional artists for each song. 
 
 * Users cannot share artists, albums and songs. In a real app, I would assume that artists and songs and albums could be shared by users. I would use <tt>has_and_belongs_to_many</tt> relationship between user and each respecitive association. 
 
-
 * Search does a wildcard search for matching albums, artists or songs. The limitation is that the song must exist in the album. A search for "He" would return a song called "Grape" from an album "Hello". A nice enhancement would be to make a separate list of songs, albums and artists.
 
+* Favorites are working with AJAX but I didnt have time to build the views to show them. Instead of adding a favorite boolean field, I used polymorphism. If the app is upgraded to allow sharing objects amongst users this would be necessary, and it was fun! 
+
 == Notes
+* This was my first time trying Postgres, devise gem for user authentication, and the bootstrap nav bar. I dont recommend devise, as there is a lot of overhead for a simple app. Bootstrap rocks. Postgres works. Falling down these rabbit holes made it take a bit longer to build the app.
+
+* Test coverage (with Rspec and FactoryGirl) is weaker than I prefer. Its hard to have full coverage in a few hours and I got distracted by the stupid devise gem
+
+
+
+
+
 
 
 
