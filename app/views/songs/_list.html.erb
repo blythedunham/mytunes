@@ -1,0 +1,29 @@
+<% songs ||= @songs %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Name</th>
+            <th>Length</th>
+            <th>Album</th>
+            <th>Artist</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, songs) do |song| %>
+            <%=render partial: "favorites/favorite_row", locals: {record: song} %> 
+            <td><%= song.name %></td>
+            <td><%= song.length %></td>
+            <td><%= link_to song.album.name, song.album %></td>
+            <td><%= link_to song.album.artist.name, song.album.artist %></td>
+            <td><%= link_to 'Show', song %></td>
+        <td><%= link_to 'Edit', edit_song_path(song) %></td>
+        <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

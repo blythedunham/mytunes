@@ -1,0 +1,36 @@
+<%= form_for(@album, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @album.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h4>
+
+      <ul>
+      <% @album.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :artist, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+    <% if current_user.artists.none? %>
+      Please first <%= link_to 'Add an Artist', new_artist_path %>
+    <% else -%>
+      <%= f.collection_select :artist_id, current_user.artists.all, :id, :name, {prompt: "Select an artist"}, class: "form-control" %>
+    <% end -%>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

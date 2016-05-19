@@ -1,0 +1,9 @@
+<%# record is the artist, song, or album %> 
+<%# render the favored view if it is already a fav, otherwise render the unfavored view %>
+<td id="<%=fid(record) %>" >
+	<%if record.favorite %> 
+		<%= render partial: "favorites/favored", locals:{ favorite:record.favorite }  %>
+	<% else %>
+		<%= render partial: "favorites/unfavored", locals:{ favorited:record } %>
+	<% end %>
+</td>

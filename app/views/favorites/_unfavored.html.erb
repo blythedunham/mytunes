@@ -1,0 +1,5 @@
+
+<%#  This is not a favorite. Clicking on the unfilled empty star will make this a favorite 
+We pass the favorited record (author, artist or song) type and id as query params %>
+<%= link_to image_tag('empty_star.png'), favorites_path(favorited_id: favorited.id, 
+favorited_type:favorited.model_name.to_s), method: :post, remote: true %> 

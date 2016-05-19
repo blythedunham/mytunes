@@ -1,0 +1,7 @@
+
+<%= form_tag( search_songs_path, role:"search", class: "navbar-form navbar-left") do %>
+  <div class="form-group">
+    <%= search_field_tag :search_text, @search_text, class:"form-control", placeholder:"Search" %>
+  </div>
+  <%= submit_tag "Search", class:"btn btn-default" %> 
+<% end %>

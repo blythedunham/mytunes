@@ -1,0 +1,25 @@
+<div class="page-header">
+  <%= link_to albums_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_album_path(@album), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1><%=h @album.name %></h1>
+  <strong> Artist: </strong><%= @album.artist.name %>
+
+</div>
+
+
+<h2> Song list </h2>
+
+
+<%= render partial: "songs/list", locals: { songs: @album.songs }  %>
+
+  <%= link_to new_song_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Song
+  <% end %>
+  
