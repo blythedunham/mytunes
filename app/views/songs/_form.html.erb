@@ -27,7 +27,7 @@
   <div class="form-group">
     <%= f.label :album_id, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-    <% if current_user.artists.none? %>
+    <% if current_user.albums.none? %>
       Please first <%= link_to 'Add an Album', new_album_path %>
     <% else -%>
       <%= f.collection_select :album_id, current_user.albums.all, :id, :name, {prompt: "Select an album"}, class: "form-control" %>
