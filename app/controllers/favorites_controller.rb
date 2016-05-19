@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
   
+  before_filter :authenticate_user!
+
   # This is a protoype! If we are to expand our application so users can share artists, then we cannot have
   # the favorite field on the artist, album and song records
   def create
