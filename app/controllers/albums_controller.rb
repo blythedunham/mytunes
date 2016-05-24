@@ -6,7 +6,7 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    @albums = current_user.albums.order(:name)
   end
 
   # GET /albums/1
